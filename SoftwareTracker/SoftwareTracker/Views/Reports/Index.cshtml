@@ -1,0 +1,39 @@
+﻿@model IPagedList<EvidencijaSoftvera_IlijaDivljan.Models.InstalledSoftware>
+
+@{
+    ViewBag.Title = "Reports";
+}
+
+<h2>Reports</h2>
+@using (Html.BeginForm("Index", "Reports", null, FormMethod.Get, new { @class = "form-inline", data_es_target = "#listReports", data_es_ajax = "true" }))
+{
+    <div class="form-group">
+        <label>User</label>
+        @Html.DropDownList("SelectedUser", null, "All", new { @class = "form-control", style = "width: 206px" })
+    </div>
+    <div class="form-group">
+        <label>Category</label>
+        @Html.DropDownList("SelectedCategory", null, "All", new { @class = "form-control", style = "width: 206px" })
+    </div>
+    <div class="form-group">
+        <label>License</label>
+        @Html.DropDownList("SelectedLicense", null, "All", new { @class = "form-control", style = "width: 206px" })
+    </div>
+    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-filter">Filter</i></button>
+     
+     
+     
+    @*<div class="row">
+        <div class="col-lg-6">
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-filter"></i></button>
+                </span>
+                @Html.DropDownList("SelectedLicense", null, "All", new { @class = "form-control" })
+                @*<input type="search" name="searchTerm" class="form-control" placeholder="Search for name..." data-es-autocomplete="@Url.Action("Autocomplete")">*@
+            @*</div>
+        </div>
+    </div>*@
+}
+<br />
+@Html.Partial("_ReportsList", Model)

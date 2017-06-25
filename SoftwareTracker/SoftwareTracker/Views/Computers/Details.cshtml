@@ -1,0 +1,117 @@
+﻿@model EvidencijaSoftvera_IlijaDivljan.Models.Computers
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Computers</h4>
+    <hr/>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComputerType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComputerType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Manufacturer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Manufacturer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Model)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SerialNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SerialNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cpu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cpu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ram)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ram) GB
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VideoCard)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VideoCard)
+        </dd>
+        <dt>
+            User
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.FullName)
+        </dd>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>
+                        Installed Software
+                    </th>
+                    <th>
+                        Version
+                    </th>
+                    <th>
+                        Category
+                    </th>
+                    <th>
+                        License
+                    </th>
+                </tr>
+                @foreach (var item in Model.InstalledSoftware)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Software.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Software.Version)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Software.Category)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Software.License)</td>
+                    </tr>
+                    
+                }
+            </table>
+        </dd>
+    </dl>
+</div>
+
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ComputersId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

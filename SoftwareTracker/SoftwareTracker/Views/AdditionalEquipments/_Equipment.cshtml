@@ -1,0 +1,39 @@
+﻿@model PagedList.IPagedList<EvidencijaSoftvera_IlijaDivljan.Models.AdditionalEquipment>
+
+<div id="equipmentList">
+    <table class="table">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Description
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.AdditionalEquipmentId }, new { @class = "label label-primary" })
+                    @Html.ActionLink("Details", "Details", new { id = item.AdditionalEquipmentId }, new { @class = "label label-info" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.AdditionalEquipmentId }, new { @class = "label label-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <div class="pagedList" data-es-target="#equipmentList">
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+        @Html.PagedListPager(Model, page => @Url.Action("Index", new { page }), PagedListRenderOptions.PageNumbersOnly)
+    </div>
+
+</div>

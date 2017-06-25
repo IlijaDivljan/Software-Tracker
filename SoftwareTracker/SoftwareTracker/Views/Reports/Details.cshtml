@@ -1,0 +1,88 @@
+﻿@model EvidencijaSoftvera_IlijaDivljan.Models.InstalledSoftware
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Installed Software</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Computer</dt>
+        <dd>&nbsp;</dd>
+        <dt>
+            Computer Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Computer.Name)
+
+        </dd>
+        <dt>
+            Model
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Computer.Model)
+        </dd>
+        <dt>
+            Manufacturer
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Computer.Manufacturer)
+        </dd>
+        <hr/>
+        <dt>Installed Software</dt>
+        <dd>&nbsp;</dd>
+        <dt>
+            Software
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Software.Name)
+        </dd>
+        <dt>
+            Category
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Software.Category)
+        </dd>
+
+        <dt>
+           Manufacturer
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Software.Manufacturer)
+        </dd>
+        <dt>
+            License
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Software.License)
+        </dd>
+        <hr />
+        <dt>Application User</dt>
+        <dd>&nbsp;</dd>
+        <dt>Name</dt>
+        <dd>@Html.DisplayFor(model => model.User.FullName)</dd>
+        <dt>Email</dt>
+        <dd>@Html.DisplayFor(model => model.User.Email)</dd>
+        <dt>Phone Number</dt>
+        <dd>@Html.DisplayFor(model => model.User.PhoneNumber)</dd>
+        <hr />
+        <dt>Record Date</dt>
+        <dd>&nbsp;</dd>
+        <dt>Date</dt>
+        <dd>@Html.DisplayFor(model => model.RecordDate)</dd>
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.InstalledSoftwareId }) |*@
+    @Html.ActionLink("Back to List", "Index", new { selectedLicense = Session["selectedLicense"], selectedCategory = Session["selectedCategory"], selectedUser = Session["selectedUser"], page = Session["page"] })
+</p>

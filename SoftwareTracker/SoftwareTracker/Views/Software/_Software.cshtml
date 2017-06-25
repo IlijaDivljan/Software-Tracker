@@ -1,0 +1,56 @@
+﻿@model IPagedList<EvidencijaSoftvera_IlijaDivljan.Models.Software>
+
+<div id="softwareList">
+    <table class="table">
+        <tr>
+            <th>
+                Category
+            </th>
+            <th>
+                Manufacturer
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Version
+            </th>
+            <th>
+                License
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Manufacturer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Version)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.License)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.SoftwareId }, new { @class = "label label-primary" })
+                    @Html.ActionLink("Details", "Details", new { id = item.SoftwareId }, new { @class = "label label-info" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.SoftwareId }, new { @class = "label label-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <div class="pagedList" data-es-target="#softwareList">
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+        @Html.PagedListPager(Model, page => @Url.Action("Index", new { page }), PagedListRenderOptions.PageNumbersOnly)
+    </div>
+</div>

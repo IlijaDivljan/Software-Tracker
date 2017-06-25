@@ -1,0 +1,99 @@
+﻿@model PagedList.IPagedList<EvidencijaSoftvera_IlijaDivljan.Models.Computers>
+
+<div id="computersList">
+    <table class="table">
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Name)*@
+                Name
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.ComputerType)*@
+                Category
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Manufacturer)*@
+                Manufacturer
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Model)*@
+                Model
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.SerialNumber)*@
+                Serial Number
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Cpu)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ram)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.VideoCard)
+                </th>*@
+            <th>
+                Additional Equipment
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.User.FullName)*@
+                User
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ComputerType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Manufacturer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SerialNumber)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Cpu)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ram)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VideoCard)
+                    </td>*@
+                <td>
+                    @{
+                        foreach (var part in item.AdditionalEquipment)
+                        {
+                            @part.Name
+                                    <br/>
+                        }
+                    }
+                </td>
+    
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.FullName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ComputersId }, new { @class = "label label-primary" })
+                    @Html.ActionLink("Details", "Details", new { id = item.ComputersId }, new { @class = "label label-info" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ComputersId }, new { @class = "label label-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <div class="pagedList" data-es-target="#computersList">
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+        @Html.PagedListPager(Model, page => @Url.Action("Index", new { page }), PagedListRenderOptions.PageNumbersOnly)
+    </div>
+</div>
